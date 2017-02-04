@@ -24,12 +24,11 @@ float power(float x, float y)
 }
 
 int main() {
-  float x, y;
+  float x;
 
   klee_make_symbolic(&x, sizeof(x), "x");
-  klee_make_symbolic(&y, sizeof(y), "y");
 
-  power(x, y);
+  power(x, 10);
 
   return 0;
 }
