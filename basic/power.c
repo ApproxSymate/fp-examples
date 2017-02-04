@@ -1,7 +1,9 @@
+
+#include <klee/klee.h>
+
 /* From Botella et al.: Symbolic Execution of Floating-Point
  * Computations
  */
-
 float power(float x, float y)
 {
   float w = y;
@@ -19,4 +21,15 @@ float power(float x, float y)
     z = 1.0 / z;
 
   return z;
+}
+
+int main() {
+  float x, y;
+
+  klee_make_symbolic(&x, sizeof(x), "x");
+  klee_make_symbolic(&y, sizeof(y), "y");
+
+  power(x, y);
+
+  return 0;
 }
