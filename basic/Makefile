@@ -8,12 +8,16 @@ CC=clang
 all: ${TARGETS}
 
 clean:
-	rm -rf *.klee *.bc
+	rm -rf *.klee *.bc *.ll
 
-.SUFFIXES: .bc .klee
+.SUFFIXES: .bc .klee .ll
 
 .c.bc:
 	${CC} -c -emit-llvm -g $<
+
+.c.ll:
+	${CC} -c -emit-llvm -g -S $<
+
 
 .bc.klee:
 	${KLEE_HOME}/bin/klee -output-dir=$@ $<
