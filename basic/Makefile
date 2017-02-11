@@ -20,5 +20,5 @@ clean:
 
 
 .bc.klee:
-	${KLEE_HOME}/bin/klee -output-dir=$@ $<
+	${KLEE_HOME}/bin/klee -search=dfs -output-dir=$@ $<
 
