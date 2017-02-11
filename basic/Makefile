@@ -1,3 +1,4 @@
+EXTRA_OPTIONS=-debug-fp-error
 
 KLEE_HOME=${HOME}/software/klee/Release+Asserts
 
@@ -20,5 +21,5 @@ clean:
 
 
 .bc.klee:
-	${KLEE_HOME}/bin/klee -search=dfs -output-dir=$@ $<
+	${KLEE_HOME}/bin/klee -search=dfs -output-dir=$@ ${EXTRA_OPTIONS} $<
 
