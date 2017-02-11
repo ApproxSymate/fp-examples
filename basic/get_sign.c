@@ -22,6 +22,8 @@ int main()
     klee_make_symbolic(&input_y, sizeof(input_y), "input_y");
     
     output = calculate_output(input_x, input_y);
+
+    klee_output_error(output);
     
     return 0;
 }
