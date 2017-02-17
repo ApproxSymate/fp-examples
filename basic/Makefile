@@ -1,3 +1,4 @@
+EXTRA_OPTIONS=-debug-fp-error
 
 KLEE_HOME=${HOME}/software/klee/Release+Asserts
 
@@ -8,13 +9,17 @@ CC=clang
 all: ${TARGETS}
 
 clean:
-	rm -rf *.klee *.bc
+	rm -rf *.klee *.bc *.ll
 
-.SUFFIXES: .bc .klee
+.SUFFIXES: .bc .klee .ll
 
 .c.bc:
 	${CC} -c -emit-llvm -g $<
 
+.c.ll:
+	${CC} -c -emit-llvm -g -S $<
+
+
 .bc.klee:
-	${KLEE_HOME}/bin/klee -output-dir=$@ $<
+	${KLEE_HOME}/bin/klee -search=dfs -output-dir=$@ ${EXTRA_OPTIONS} $<
 

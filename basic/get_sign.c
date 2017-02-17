@@ -23,7 +23,7 @@ int main()
     
     output = calculate_output(input_x, input_y);
 
-    klee_output_error(&output);
+    klee_output_error(output);
     
     return 0;
 }
