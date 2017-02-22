@@ -18,9 +18,8 @@ int main() {
             for (inner = 0; inner < 2; inner++) {
                 product[row][col] += aMatrix[row][inner] * bMatrix[inner][col];
             }
-            //printf("%d ", product[row][col]);
+	    klee_output_error(product[row][col]);
         }
-        //printf("\n");
     }
     
     return 0;
