@@ -4,6 +4,18 @@
  * function to thrown division by zero and invalid value exceptions.
  */
 
+#include <math.h>
+#include <stdlib.h>
+#include <klee/klee.h>
+
+#define GSL_SUCCESS 0;
+#define GSL_DBL_EPSILON 2.2204460492503131e-16
+
+typedef struct {
+  double val;
+  double err;
+} gsl_sf_result;
+
 int gsl_sf_bessel_Knu_scaled_asympx_e(const double nu, const double x, gsl_sf_result *result) {
   double mu = 4.0 * nu * nu;
   double mum1 = mu - 1.0;
@@ -15,4 +27,17 @@ int gsl_sf_bessel_Knu_scaled_asympx_e(const double nu, const double x, gsl_sf_re
   return GSL_SUCCESS;
 }
 
+int main(int argc, char **argv) {
+  double nu, x;
+  gsl_sf_result *r = malloc(sizeof(gsl_sf_result));
+  
+  klee_make_symbolic(&nu, sizeof(nu), "nu");
+  klee_make_symbolic(&x, sizeof(x), "x");
 
+  gsl_sf_bessel_Knu_scaled_asympx_e(nu, x, r);
+
+  klee_output_error(r->val);
+  klee_output_error(r->err);
+  
+  return 0;
+}
