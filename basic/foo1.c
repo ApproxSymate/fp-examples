@@ -1,7 +1,7 @@
 /* From Botella et al.: Symbolic Execution of Floating-Point
  * Computations
  */
-
+#include <klee/klee.h>
 
 float foo1(float x)
 {
@@ -21,3 +21,12 @@ float foo1(float x)
   return y;
 }
 
+int main(int argc, char **argv) {
+  float input;
+
+  klee_make_symbolic(&input, sizeof(input), "input");
+
+  klee_output_error(foo1(input));
+
+  return 0;
+}

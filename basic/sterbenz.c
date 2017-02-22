@@ -3,6 +3,7 @@
  * source. Computes floating-point average, provably without overflow.
  * The tool reported in Barr et al., however, discovered underflows.
  */
+#include <klee/klee.h>
 
 double av1(double x, double y) {
   return (x + y) / 2.0;
@@ -41,6 +42,17 @@ double average(double x, double y) {
       return av4(x, y);
   } else 
   return av1(x, y);
+}
+
+int main(int argc, char **argv) {
+  double in1, in2;
+
+  klee_make_symbolic(&in1, sizeof(in1), "in1");
+  klee_make_symbolic(&in2, sizeof(in2), "in2");
+
+  klee_output_error(average(in1, in2));
+  
+  return 0;
 }
 
 

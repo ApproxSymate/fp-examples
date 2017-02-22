@@ -38,7 +38,7 @@ int main() {
   ffunc();
   dfunc();
   ffunc2();
-  for (i = 0; i < 3; i++)
+  for (int i = 0; i < 3; i++)
     ffunc3();
   mfunc();
 }
