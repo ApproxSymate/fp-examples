@@ -12,9 +12,9 @@ void test(int N,float* x) {
     y = x[i] - c; t = sum + y;
     c = (t - sum) - y; sum = t;
 
-    // The klee_output_error below is a replacement of:
+    // The klee_bound_error below is a replacement of:
     // assert(Debug.checkAccuracy(sum,0.01f,"a"));
-    klee_output_error(sum);
+    klee_bound_error(sum, 0.0);
   }
 }
 

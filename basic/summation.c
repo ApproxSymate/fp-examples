@@ -12,7 +12,7 @@ void test(int N, float* x) {
     
     // The following replaces
     // assert(Debug.checkAccuracy(sum,0.01f,"a"));
-    klee_output_error(sum);
+    klee_bound_error(sum, 0.01);
   }
 }
 

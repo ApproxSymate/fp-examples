@@ -18,7 +18,7 @@ int main() {
             for (inner = 0; inner < 2; inner++) {
                 product[row][col] += aMatrix[row][inner] * bMatrix[inner][col];
             }
-	    klee_output_error(product[row][col]);
+	    klee_bound_error(product[row][col], 0.01);
         }
     }
     

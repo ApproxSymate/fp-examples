@@ -36,8 +36,8 @@ int main(int argc, char **argv) {
 
   gsl_sf_bessel_Knu_scaled_asympx_e(nu, x, r);
 
-  klee_output_error(r->val);
-  klee_output_error(r->err);
+  klee_bound_error(r->val, 0.1);
+  klee_bound_error(r->err, 0.1);
   
   return 0;
 }
