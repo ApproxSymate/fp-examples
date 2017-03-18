@@ -1,4 +1,4 @@
-EXTRA_OPTIONS=-debug-fp-error
+EXTRA_OPTIONS=-floating-point-error -debug-floating-point-error
 
 KLEE_HOME=${HOME}/software/klee/Release+Asserts
 
