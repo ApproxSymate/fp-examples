@@ -4,7 +4,6 @@
 #
 # Modified for compilation with wllvm and KLEE runtime for producing
 # whole-program bitcode for running with KLEE.
-# By Andrew Santosa (santosa_1999@yahoo.com)
 
 #####################################################################
 # Added by C. Lee.
