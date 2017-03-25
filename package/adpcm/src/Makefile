@@ -4,7 +4,6 @@
 #
 # Modified for compilation with wllvm and KLEE runtime for producing
 # whole-program bitcode for running with KLEE.
-# By Andrew Santosa (santosa_1999@yahoo.com)
 
 #####################################################################
 # Added by C. Lee.
@@ -38,7 +37,10 @@ ALLSRC=README adpcm.2 Makefile adpcm.h libst.h adpcm.c timing.c rawcaudio.c \
 	rawdaudio.c suncaudio.c sgicaudio.c sgidaudio.c hello.adpcm.uu
 
 all: adpcm.o rawcaudio rawdaudio timing
-	cp rawcaudio rawdaudio timing ../bin/.
+	if [ ! -e ../bin ] ; then \
+		mkdir ../bin ; \
+	fi
+	cp -f rawcaudio rawdaudio timing ../bin/.
 
 sgi: all sgicaudio sgidaudio
 
@@ -75,4 +77,4 @@ adpcm.shar: $(ALLSRC)
 
 # Added by C. Lee
 clean:
-	rm -f *.o ; rm rawcaudio rawdaudio timing ; rm -f ../bin/* ../output*
+	rm -f *.o *.bc .*.bc ; rm rawcaudio rawdaudio timing ; rm -f ../bin/* ../output*
