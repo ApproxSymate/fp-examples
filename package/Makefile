@@ -1,7 +1,7 @@
 
-EXTRA_OPTIONS=
+EXTRA_OPTIONS=-precision -debug-precision
 
-LLVM_COMPILER=clang-3.4
+LLVM_COMPILER=clang
 
 %.klee: build
 	time klee ${EXTRA_OPTIONS} -output-dir=$*.klee adpcm/src/$*.bc

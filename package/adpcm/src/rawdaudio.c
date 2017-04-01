@@ -13,16 +13,20 @@ short	sbuf[NSAMPLES];
 
 main() {
     int n;
-klee_make_symbolic(&n, sizeof(n), "n");
+
     while(1) {
-	//n = read(0, abuf, NSAMPLES/2);
-	if ( n < 0 ) {
-	    perror("input file");
-	    exit(1);
-	}
-	if ( n == 0 ) break;
-	adpcm_decoder(abuf, sbuf, n*2, &state);
-	write(1, sbuf, n*4);
+      //n = read(0, abuf, NSAMPLES/2);
+      klee_make_symbolic(&n, sizeof(n), "n");
+
+      klee_track_error(abuf, "abuf0_error");
+      
+      if ( n < 0 ) {
+	perror("input file");
+	exit(1);
+      }
+      if ( n == 0 ) break;
+      adpcm_decoder(abuf, sbuf, n*2, &state);
+      write(1, sbuf, n*4);
     }
     fprintf(stderr, "Final valprev=%d, index=%d\n",
 	    state.valprev, state.index);

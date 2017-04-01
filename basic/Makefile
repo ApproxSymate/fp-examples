@@ -1,4 +1,4 @@
-EXTRA_OPTIONS=-floating-point-error -debug-floating-point-error
+EXTRA_OPTIONS=-precision -debug-precision
 
 KLEE_HOME=${HOME}/software/klee/Release+Asserts
 

@@ -26,10 +26,11 @@ CFLAGS = -static -O3
 # CFLAGS=-O -I/usr/demo/SOUND
 
 WLLVM_HOME=${HOME}/software/whole-program-llvm
-KLEE_HOME=${HOME}/software/klee/Release+Asserts
+KLEE_SRC=${HOME}/software/klee
+KLEE_HOME=${KLEE_SRC}/Release+Asserts
 LLVM_COMPILER=clang
 CC=${WLLVM_HOME}/wllvm
-CFLAGS=-g -I${KLEE_HOME}/include
+CFLAGS=-g -I${KLEE_SRC}/include
 LDFLAGS=-L${KLEE_HOME}/lib
 LDLIBS=-lkleeRuntest
 
