@@ -1,7 +1,7 @@
 
 EXTRA_OPTIONS=-precision -debug-precision -posix-runtime
 
-SYM_OPTIONS=-sym-files 1 60000
+SYM_OPTIONS=-sym-stdin 60000
 
 LLVM_COMPILER=clang
 
