@@ -21,5 +21,7 @@ clean:
 
 
 .bc.klee:
+	opt -mem2reg $< > $*1.bc
+	mv -f $*1.bc $<
 	${KLEE_HOME}/bin/klee -search=dfs -output-dir=$@ ${EXTRA_OPTIONS} $<
 
