@@ -34,6 +34,8 @@ int main(int argc, char **argv) {
   klee_make_symbolic(&nu, sizeof(nu), "nu");
   klee_make_symbolic(&x, sizeof(x), "x");
 
+  x = 0.1;
+
   gsl_sf_bessel_Knu_scaled_asympx_e(nu, x, r);
 
   klee_bound_error(r->val, 0.1);
