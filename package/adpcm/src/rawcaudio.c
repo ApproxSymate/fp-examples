@@ -2,6 +2,7 @@
 
 #include "adpcm.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <klee/klee.h>
 
 struct adpcm_state state;
@@ -11,12 +12,11 @@ struct adpcm_state state;
 char	abuf[NSAMPLES/2];
 short	sbuf[NSAMPLES];
 
-main() {
+int main(int argc, char *argv[]) {
   int n;
 
   while(1) {
-    //n = read(0, sbuf, NSAMPLES*2);
-    klee_make_symbolic(&n, sizeof(n), "n");
+    n = read(0, sbuf, NSAMPLES*2);
 
     klee_track_error(sbuf, "sbuf0_error");
     
@@ -30,5 +30,6 @@ main() {
   }
   fprintf(stderr, "Final valprev=%d, index=%d\n",
 	  state.valprev, state.index);
+  return 0;
   exit(0);
 }
