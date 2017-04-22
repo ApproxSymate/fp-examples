@@ -14,14 +14,13 @@ clean:
 .SUFFIXES: .bc .klee .ll
 
 .c.bc:
-	${CC} -c -emit-llvm -g $<
+	${CC} -c -emit-llvm -g -o $*_123.bc $<
+	opt -mem2reg < $*_123.bc > $@
+	rm -f $*_123.bc
 
-.c.ll:
-	${CC} -c -emit-llvm -g -S $<
-
+.bc.ll:
+	llvm-dis $<
 
 .bc.klee:
-	opt -mem2reg $< > $*1.bc
-	mv -f $*1.bc $<
 	${KLEE_HOME}/bin/klee -search=dfs -output-dir=$@ ${EXTRA_OPTIONS} $<
 
