@@ -1,4 +1,4 @@
-EXTRA_OPTIONS=-precision -debug-precision
+EXTRA_OPTIONS=-precision -debug-precision -loop-breaking
 
 KLEE_HOME=${HOME}/software/klee/Release+Asserts
 
