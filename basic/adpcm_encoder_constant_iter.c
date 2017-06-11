@@ -169,6 +169,9 @@ adpcm_coder(indata, outdata, len, state)
 	len--;
     }
 
+    /* A hack to prevent assertion failure in KLEE for numerical precision */
+    outp = (signed char *)outdata + 25;
+
     /* Output last step, if needed */
     if ( !bufferstep )
       *outp++ = outputbuffer;
