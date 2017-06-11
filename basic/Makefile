@@ -1,4 +1,3 @@
-EXTRA_OPTIONS=-precision -debug-precision -loop-breaking
 
 KLEE_HOME=${HOME}/software/klee/Release+Asserts
 
@@ -9,9 +8,9 @@ CC=clang
 all: ${TARGETS}
 
 clean:
-	rm -rf *.klee *.bc *.ll
+	rm -rf *.klee *.dklee *.loop *.dloop *.bc *.ll
 
-.SUFFIXES: .bc .klee .ll
+.SUFFIXES: .bc .klee .dklee .ll .loop .dloop
 
 .c.bc:
 	${CC} -c -emit-llvm -g -o $*_123.bc $<
@@ -22,5 +21,16 @@ clean:
 	llvm-dis $<
 
 .bc.klee:
-	${KLEE_HOME}/bin/klee -search=dfs -output-dir=$@ ${EXTRA_OPTIONS} $<
+	if [ -z "$$OUTPUT_DIR" ] ; then \
+		OUTPUT_DIR="$@" ; \
+	fi ; \
+	${KLEE_HOME}/bin/klee -search=dfs -output-dir="$$OUTPUT_DIR" $$EXTRA_OPTIONS -precision $<
 
+.bc.dklee:
+	EXTRA_OPTIONS="-debug-precision" OUTPUT_DIR="$@" make $*.klee
+
+.bc.loop:
+	EXTRA_OPTIONS="-loop-breaking" OUTPUT_DIR="$@" make $*.klee
+
+.bc.dloop:
+	EXTRA_OPTIONS="-loop-breaking -debug-precision" OUTPUT_DIR="$@" make $*.klee
