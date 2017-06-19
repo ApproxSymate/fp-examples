@@ -200,5 +200,7 @@ int main(int argc, char *argv[]) {
     
   adpcm_coder(sbuf, abuf, n/2, &state);
 
+  klee_bound_error(abuf[0], 1.3);
+
   return 0;
 }
