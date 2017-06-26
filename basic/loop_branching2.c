@@ -18,7 +18,6 @@
 
 int main(int argc, char **argv) {
   int c = 0, e = 0;
-  char a[INPUT_SIZE];
 
   klee_make_symbolic(&c, sizeof(c), "c");
   klee_track_error(&c, "c_error");
