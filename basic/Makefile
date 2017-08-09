@@ -1,9 +1,9 @@
-
-KLEE_HOME=${HOME}/software/klee/Release+Asserts
+KLEE_HOME=${HOME}/software/fp-analysis-klee/Release+Asserts
 
 TARGETS=$(patsubst %.c,%.klee,$(wildcard *c))
 
 CC=clang
+CFLAGS=-I${KLEE_HOME}/include -I${KLEE_HOME}/../include
 
 all: ${TARGETS}
 
@@ -13,7 +13,7 @@ clean:
 .SUFFIXES: .bc .klee .dklee .ll .loop .dloop
 
 .c.bc:
-	${CC} -c -emit-llvm -g -o $*_123.bc $<
+	${CC} ${CFLAGS} -c -emit-llvm -g -o $*_123.bc $<
 	opt -mem2reg < $*_123.bc > $@
 	rm -f $*_123.bc
 
