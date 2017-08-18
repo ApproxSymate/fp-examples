@@ -12,8 +12,8 @@ int arr[5], answer;
 
 int main() {
 
-  klee_make_symbolic(arr, sizeof arr, "arr");
-  klee_track_error(arr, "arr_error");
+  klee_make_symbolic(arr, sizeof arr, "__arr32__arr");
+  klee_track_error(arr, "__arr32__arr_error");
 
   test_array(arr);
 
