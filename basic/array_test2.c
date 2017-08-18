@@ -22,10 +22,6 @@ int main() {
 }
 
 void test_array(int *x) {
-  int i;
-
   // x[0] = (x[1] + x[2]) * (x[3] - x[4]);
   x[0] = x[1] + x[2];
-
-  return;
 }
