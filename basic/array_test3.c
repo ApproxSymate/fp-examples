@@ -4,13 +4,15 @@
 #include <klee/klee.h>
 #include <stdio.h>
 
+#define SIZE 5
+
 void test_array(long long *x);
 
-long long arr[5], answer;
+long long arr[SIZE], answer;
 
 int main() {
 
-  klee_make_symbolic(arr, sizeof arr, "__arr64__arr");
+  klee_make_symbolic(arr, SIZE * sizeof(long long), "__arr64__arr");
   klee_track_error(arr, "__arr64__arr_error");
 
   test_array(arr);
