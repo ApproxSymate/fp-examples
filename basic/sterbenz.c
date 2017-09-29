@@ -50,8 +50,8 @@ int main(int argc, char **argv) {
   klee_make_symbolic(&in1, sizeof(in1), "in1");
   klee_make_symbolic(&in2, sizeof(in2), "in2");
 
-  klee_bound_error(average(in1, in2), 0.01);
-  
+  klee_bound_error(average(in1, in2), "average(in1, in2)", 0.01);
+
   return 0;
 }
 

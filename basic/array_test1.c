@@ -25,7 +25,7 @@ int main() {
 
   test_array(arr);
 
-  klee_bound_error(arr[0], 1.3);
+  klee_bound_error(arr[0], "arr[0]", 1.3);
   return 0;
 }
 

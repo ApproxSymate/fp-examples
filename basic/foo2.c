@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
 
   klee_make_symbolic(&input, sizeof(input), "input");
 
-  klee_bound_error(foo2(input), 0.01);
+  klee_bound_error(foo2(input), "foo2(input)", 0.01);
 
   return 0;
 }

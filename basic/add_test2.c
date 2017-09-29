@@ -13,7 +13,7 @@ int main() {
   klee_track_error(&a, "error_a");
   klee_track_error(&b, "error_b");
   answer = add(a, b);
-  klee_bound_error(answer, 1.3);
+  klee_bound_error(answer, "answer", 1.3);
   return 0;
 }
 int add(int x, int y) { return (x + y) * (x - y); }

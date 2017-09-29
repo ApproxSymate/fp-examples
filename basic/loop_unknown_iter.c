@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
 
   c = loop(c, bound);
 
-  klee_bound_error(c, 1.3);
+  klee_bound_error(c, "c", 1.3);
 
   return 0;
 }
