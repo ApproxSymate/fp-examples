@@ -26,7 +26,7 @@ int main()
  
     output = calculate_output(input_x, input_y);
 
-    klee_bound_error(output, 1.3);
-    
+    klee_bound_error(output, "output", 1.3);
+
     return 0;
 }

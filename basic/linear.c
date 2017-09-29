@@ -15,31 +15,31 @@ void test(int r, float in0) {
 
       // The following replaces
       // assert(Debug.checkAccuracy(x0,0.01f,"a"));
-      klee_bound_error(x0, 0.01);
-      
+      klee_bound_error(x0, "x0", 0.01);
+
       x1=0.3167f * x0 + 0.1016f * x1 - 0.4444f *x2 + 0.1807f * in0;
 
       // The following replaces
       // assert(Debug.checkAccuracy(x1,0.01f,"a"));
-      klee_bound_error(x1, 0.01);
-      
+      klee_bound_error(x1, "x1", 0.01);
+
       x2=0.1278f * x0 + 0.4444f * x1 + 0.8207f * x2 + 0.0729f * in0;
 
       // The following replaces
       // assert(Debug.checkAccuracy(x2,0.01f,"a"));
-      klee_bound_error(x2, 0.01);
-      
+      klee_bound_error(x2, "x2", 0.01);
+
       x3 = 0.0365f * x0 + 0.1270f * x1 + 0.5202f * x2 + 0.4163f * x3 - 0.5714f * x4 + 0.0208f * in0;
       
       // The following replaces
       // assert(Debug.checkAccuracy(x3,0.01f,"a"));
-      klee_bound_error(x3, 0.01);
-      
+      klee_bound_error(x3, "x3", 0.01);
+
       x4 = 0.0147f * x0 + 0.0512f * x1 + 0.2099f * x2 + 0.57104f * x3 + 0.7694f * x4 + 0.0084f * in0;
 
       // The following replaces
       // assert(Debug.checkAccuracy(x4,0.01f,"a"));
-      klee_bound_error(x4, 0.01);
+      klee_bound_error(x4, "x4", 0.01);
     }
   }
 }

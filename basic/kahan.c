@@ -14,7 +14,7 @@ void test(int N,float* x) {
 
     // The klee_bound_error below is a replacement of:
     // assert(Debug.checkAccuracy(sum,0.01f,"a"));
-    klee_bound_error(sum, 0.0);
+    klee_bound_error(sum, "sum", 0.0);
   }
 }
 

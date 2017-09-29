@@ -17,7 +17,7 @@ int main() {
 
   answer = add(a, b);
 
-  klee_bound_error(answer, 1.3);
+  klee_bound_error(answer, "answer", 1.3);
   return 0;
 }
 

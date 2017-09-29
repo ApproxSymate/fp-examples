@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
   klee_assert(klee_is_symbolic(d));
 
   // Bound the error
-  klee_bound_error(c, 1.3);
+  klee_bound_error(c, "c", 1.3);
 
   return 0;
 }
