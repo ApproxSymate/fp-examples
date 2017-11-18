@@ -8,7 +8,7 @@ TARGETS=$(patsubst %.c,%.bc,$(wildcard *c))
 all: ${TARGETS}
 
 clean:
-	rm -f ${TARGETS} *~
+	rm -rf ${TARGETS} *~ klee-last klee-out-*
 
 .SUFFIXES: .bc
 

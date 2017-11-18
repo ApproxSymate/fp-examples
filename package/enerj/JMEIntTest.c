@@ -541,7 +541,7 @@ struct Vector3f *randvec() {
   return ret;
 }
 
-void main(int argc, char *argv) {
+int main(int argc, char **argv) {
   tempVa = /* Approx */ malloc(sizeof(struct Vector3f));
   tempVb = /* Approx */ malloc(sizeof(struct Vector3f));
   tempVc = /* Approx */ malloc(sizeof(struct Vector3f));
@@ -584,4 +584,6 @@ void main(int argc, char *argv) {
   free(tempVe);
   free(tempV2a);
   free(tempV2b);
+
+  return 0;
 }
