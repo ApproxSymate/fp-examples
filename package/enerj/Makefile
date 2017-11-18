@@ -17,7 +17,7 @@ clean:
 	@if [ "$*"=="FloodFiller" ] ; then \
 		EXTRA_OPTIONS="--max-depth=2" ; \
 	fi ; \
-	${KLEE_HOME}/Release+Asserts/bin/klee --precision --output-dir=$@ $*.bc
+	${KLEE_HOME}/Release+Asserts/bin/klee --precision --output-dir=$@ $$EXTRA_OPTIONS $*.bc
 
 .c.bc:
 	${CC} ${CFLAGS} -c -emit-llvm -I${KLEE_INCLUDE_PATH} $<
