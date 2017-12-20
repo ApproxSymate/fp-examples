@@ -1,6 +1,5 @@
-KLEE_SRC=${HOME}/software/fp-analysis-klee
-KLEE=${KLEE_SRC}/build/bin/klee
-KLEE_INCLUDE=${KLEE_SRC}/include
+KLEE=${KLEE_HOME}/build/bin/klee
+KLEE_INCLUDE=${KLEE_HOME}/include
 CC=clang
 CFLAGS=-g
 LIBSRC=jaricom.c \
