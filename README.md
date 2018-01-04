@@ -54,7 +54,7 @@ numerical precision in https://github.com/fp-analysis/klee.
      make <program_name>.klee
      ```
      where `<program_name>` is either `rawcaudio`, `rawdaudio`, `timing`,
-     or `memdjpeg`.
+     `memdjpeg`, or `memcjpeg`.
    * To remove the KLEE output directories:
      ```
      make clean

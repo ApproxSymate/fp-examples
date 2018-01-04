@@ -7,7 +7,22 @@ CC=clang
 CFLAGS=-g
 LIBSRC=jaricom.c \
 	jerror.c \
+	jcapimin.c \
+	jcapistd.c \
+	jccoefct.c \
+	jccolor.c \
+	jcdctmgr.c \
+	jchuff.c \
+	jcinit.c \
+	jcmainct.c \
+	jcmarker.c \
+	jcmaster.c \
+	jcparam.c \
+	jcprepct.c \
+	jcsample.c \
 	jdapimin.c \
+	jdatadst.c \
+	jfdctint.c \
 	jmemmgr.c \
 	jmemnobs.c \
 	jdapistd.c \
@@ -34,7 +49,7 @@ LIBSRC=jaricom.c \
 
 LIBBITCODE=$(patsubst %.c,%.bc,${LIBSRC})
 
-TARGETBITCODE=memdjpeg.whole.bc example.whole.bc
+TARGETBITCODE=memdjpeg.whole.bc memcjpeg.whole.bc
 
 all: ${TARGETBITCODE}
 
