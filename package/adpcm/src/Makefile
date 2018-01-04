@@ -25,13 +25,10 @@ CFLAGS = -static -O3
 # May need this on a sun:
 # CFLAGS=-O -I/usr/demo/SOUND
 
-WLLVM_HOME=${HOME}/software/whole-program-llvm
-KLEE_SRC=${HOME}/software/klee
-KLEE_HOME=${KLEE_SRC}/Release+Asserts
 LLVM_COMPILER=clang
-CC=${WLLVM_HOME}/wllvm
-CFLAGS=-g -I${KLEE_SRC}/include
-LDFLAGS=-L${KLEE_HOME}/lib
+CC=${WLLVM_HOME}/bin/wllvm
+CFLAGS=-g -I${KLEE_HOME}/include
+LDFLAGS=-L${KLEE_HOME}/build/lib
 LDLIBS=-lkleeRuntest
 
 ALLSRC=README adpcm.2 Makefile adpcm.h libst.h adpcm.c timing.c rawcaudio.c \
@@ -63,15 +60,15 @@ sgidaudio: sgidaudio.o adpcm.o
 
 rawcaudio: rawcaudio.o adpcm.o
 	$(CC) $(CFLAGS) $(LDFLAGS) rawcaudio.o adpcm.o -o rawcaudio $(LDLIBS)
-	$(WLLVM_HOME)/extract-bc $@
+	$(WLLVM_HOME)/bin/extract-bc $@
 
 rawdaudio: rawdaudio.o adpcm.o
 	$(CC) $(CFLAGS) $(LDFLAGS) rawdaudio.o adpcm.o -o rawdaudio $(LDLIBS)
-	$(WLLVM_HOME)/extract-bc $@
+	$(WLLVM_HOME)/bin/extract-bc $@
 
 timing: timing.o adpcm.o
 	$(CC) $(CFLAGS) $(LDFLAGS) timing.o adpcm.o -o timing $(LDLIBS)
-	$(WLLVM_HOME)/extract-bc $@
+	$(WLLVM_HOME)/bin/extract-bc $@
 
 adpcm.shar: $(ALLSRC)
 	shar $(ALLSRC) > adpcm.shar
