@@ -1,3 +1,6 @@
+# To build:
+# KLEE_HOME=<klee_source_path> make
+
 KLEE=${KLEE_HOME}/build/bin/klee
 KLEE_INCLUDE=${KLEE_HOME}/include
 CC=clang
@@ -31,7 +34,7 @@ LIBSRC=jaricom.c \
 
 LIBBITCODE=$(patsubst %.c,%.bc,${LIBSRC})
 
-TARGETBITCODE=memdjpeg.whole.bc
+TARGETBITCODE=memdjpeg.whole.bc example.whole.bc
 
 all: ${TARGETBITCODE}
 
