@@ -64,4 +64,9 @@ numerical precision in https://github.com/fp-analysis/klee.
      ```
      make realclean
      ```
-     
+
+* The `loops` directory contains looping examples from Malardalen WCET
+  benchmark suite without floating points and for which KLEE with numerical
+  precision is able to infer loop trip counts.
+
+
